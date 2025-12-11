@@ -1,0 +1,10 @@
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sneaky_plot_tag"
+version = "1.0"
+dependencies = ["matplotlib", "GitPython"]
+
+description = "Add a git short hash to plots."
