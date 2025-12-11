@@ -1,3 +1,5 @@
+import __main__
+
 import git
 import os
 
@@ -20,11 +22,16 @@ def add_git_hash(axes):
     plt.setp(text_box.patch, facecolor='white', alpha=0.5)
     axes.add_artist(text_box)
 
-def __plot(*args, **kwargs):
+def __figure(*args, **kwargs):
 
-    plt._plot(*args, **kwargs)
+    fig = plt._figure(*args, **kwargs)
+    add_git_hash(plt.gca())
+
+    return fig
 
 def global_sneaky_tag_override():
 
-    plt._plot = plt.plot
-    plt.plot = __plot
+    plt._figure = plt.figure
+    plt.figure = __figure
+
+global_sneaky_tag_override()
